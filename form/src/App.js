@@ -6,6 +6,8 @@ class form extends React.Component {
         constructor() {
             super()
             this.state = {
+                firstName:"",
+                lastName:"",
                 email: "",
                 password: "",
                 rememberMe: false,
@@ -17,6 +19,8 @@ class form extends React.Component {
             this.handlePasswordChange = this.handlePasswordChange.bind(this)
             this.handleRememberMeChange = this.handleRememberMeChange.bind(this)
             this.handleSubmit = this.handleSubmit.bind(this)
+            this.handleFirstNameChange = this.handleFirstNameChange.bind(this)
+            this.handleLasttNameChange = this.handleLasttNameChange.bind(this)
         }
         handleEmailChange(e){
             this.setState({ email: e.target.value })        
@@ -53,6 +57,13 @@ class form extends React.Component {
 
 
         }
+        handleFirstNameChange(e){
+            this.setState({ firstName: e.target.value }) 
+        }
+
+        handleLasttNameChange(e){
+            this.setState({ lastName: e.target.value }) 
+        }
 
         render() {
             
@@ -60,15 +71,17 @@ class form extends React.Component {
                     <form onSubmit={this.handleSubmit}>
     <div className="mb-3">
         <label  className="form-label">Email address</label>
-        <input onChange={this.handleEmailChange} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+        <input className="form-control mb-4" type="text" placeholder="First Name" onChange={this.handleFirstNameChange}/>
+        <input className="form-control mb-4" type="text" placeholder="Last Name" onChange={this.handleLasttNameChange}/>
+        <input onChange={this.handleEmailChange} placeholder="Your Email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>  
     </div>
     <div className="mb-3">
         <label  className="form-label">Password</label>
-        <input onChange={this.handlePasswordChange} type="password" className="form-control" id="exampleInputPassword1"/>
+        <input onChange={this.handlePasswordChange} placeholder="Your password" type="password" className="form-control" id="exampleInputPassword1"/>
     </div>
     <div className="mb-3 form-check">
         <input onChange={this.handleRememberMeChange} name='checkbox' type="checkbox" className="form-check-input" id="checkbox"/>
-        <label className="form-check-label" >Check me out</label>
+        <label className="form-check-label" >Remember me</label>
     </div>
     <button onSubmit={this.handleSubmit} type="submit" className="btn btn-primary">Submit</button>
     </form>
